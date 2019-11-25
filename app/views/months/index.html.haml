@@ -1,0 +1,13 @@
+.header
+  %h1.header__manth 
+    = "何月の明細を見たいか選択して下さい"
+  =link_to new_category_path, class: "header__new" do
+    .header__new__btn 金額入力へ
+.side-contents
+  - @months.each do |month|
+    = link_to month_path(month.id),class: "side-content__link"  do
+      %ul.side-content
+        %li.side-content__month
+          = month.month
+        %li.side-content__money
+          = "¥#{Content.where("month_id = #{month.id}").sum(:money).to_i}"

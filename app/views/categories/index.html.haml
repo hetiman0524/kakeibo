@@ -1,0 +1,27 @@
+-# .wrapper
+-#   = render 'shared/index'
+-#   .expenses
+-#     .left-content
+-#       .left-content__title
+-#         %h2.left-content__title__name
+-#         支出
+-#       .left-content__list
+-#         %table.left-content__list__category
+-#           - @categories_hash.each do |k,v|
+-#             %tr
+-#               %td.category-name
+-#                 = "#{k}" + ":"
+-#               %td
+-#                 = "¥#{v}"
+-#       .left-content__total
+-#         %p.left-content__total__category
+-#           合計:
+-#           = "¥#{Content.where("month_id = #{@month.id}").sum(:money).to_i}"
+-#         %p.left-content__total__money
+-#     .chart
+-#       = pie_chart @categories_hash, id: "total-chart", width: "500px", height: "400px"
+  
+-# :css
+-#   .category-name {
+-#     width: 150px;
+-#   }
