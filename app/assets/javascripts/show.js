@@ -6,12 +6,10 @@ $(function()  {
 
   //thisはclickしたtriangleを持っている
   //parentはthisの親、つまりcategory名と金額を指定している
-  console.log($(this).parent());
+  var select = ($(this).parent().next(".hidden"));
+  select.removeClass("hidden");
   //hiddenを取得して、hiddenを消す
-
-  //$('.hidden').removeClass("hidden");
-
-  //$(this).removeClass("hidden");
+  //$(".hidden").addClass("hidden");
   
   //$('.hidden').show();
   })
