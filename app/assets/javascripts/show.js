@@ -1,16 +1,24 @@
 $(function()  {
-  $(".triangle").on("click", function(){
-  console.log(".triangle")
-  //var select = $(".hidden").var();
-  //const index = $(".content-show").index(select);
-
+  $(".triangle-open").on("click", function(){
+  console.log(".triangle-open")
+  
   //thisはclickしたtriangleを持っている
   //parentはthisの親、つまりcategory名と金額を指定している
-  var select = ($(this).parent().next(".hidden"));
-  select.removeClass("hidden");
-  //hiddenを取得して、hiddenを消す
-  //$(".hidden").addClass("hidden");
+  var gethidden = ($(this).parent().next(".hidden"));
+  var gettriangleclose = ($(this).next(".triangle-close"));
+  gethidden.removeClass("hidden");
+  $(this).addClass("open");
+  gettriangleclose.removeClass("close");
+  })
+
+  $(".triangle-close").on("click", function(){
+  console.log(".triangle-close")
   
-  //$('.hidden').show();
+  var getcontentshow = ($(this).parent().next(".content-show"));
+  var gettriangleopen = ($(this).prev(".triangle-open"));
+  getcontentshow.addClass("hidden")
+  gettriangleopen.removeClass("open")
+  $(this).addClass("hidden")
   })
 });
+

@@ -20,9 +20,7 @@ class CategoriesController < ApplicationController
     @content = Content.new
   end
 
-  def create
-    # @category = Category.new(name: category_params[:name])
-                                           #↓idへ変換する処理
+  def create                                             #↓idへ変換する処理
     @content = Content.create(category_id: Category.where(name: category_params[:name])[0].id, month_id: category_params[:content][:month], content: category_params[:content][:content], money: category_params[:content][:money])
     redirect_to root_path(@category)
   end

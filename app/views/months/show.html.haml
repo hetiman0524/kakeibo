@@ -9,8 +9,8 @@
         %table.left-content__list__category
           - @categories_hash.each do |k,v|
             %tr
-              %td.triangle
-
+              %td.triangle-open
+              %td.triangle-close.close
               %td.category-name
                 = "#{k}" + ":"
               %td
@@ -37,14 +37,28 @@
   .category-name {
     width: 150px;
   }
-  .triangle {
+  .triangle-open {
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
     border-top: 10px solid black;
   }
+  .triangle-close{
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 10px solid black;
+    
+  }
+  .close {
+    display: none;
+  }
   .hidden {
+    display: none;
+  }
+  .open {
     display: none;
   }
 
