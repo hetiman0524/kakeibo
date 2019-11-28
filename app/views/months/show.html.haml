@@ -15,7 +15,7 @@
                 = "#{k}" + ":"
               %td
                 = "¥#{v[0]}"
-            %tr.content-show.hidden
+            %tr.content-show.show
               - v[1].contents.where("month_id = #{@month.id}").each do |con| 
                 %td
                 %td
@@ -55,7 +55,7 @@
   .close {
     display: none;
   }
-  .hidden {
+  .show {
     display: none;
   }
   .open {

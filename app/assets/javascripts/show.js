@@ -2,23 +2,27 @@ $(function()  {
   $(".triangle-open").on("click", function(){
   console.log(".triangle-open")
   
-  //thisはclickしたtriangleを持っている
-  //parentはthisの親、つまりcategory名と金額を指定している
-  var gethidden = ($(this).parent().next(".hidden"));
+  //詳細を取得、表示する
+  var gethidden = ($(this).parent().next(".show"));
+  gethidden.removeClass("show");
+  //△の三角形を取得、表示する
   var gettriangleclose = ($(this).next(".triangle-close"));
-  gethidden.removeClass("hidden");
-  $(this).addClass("open");
   gettriangleclose.removeClass("close");
+  //▽の三角形を消す
+  $(this).addClass("open");
   })
 
   $(".triangle-close").on("click", function(){
   console.log(".triangle-close")
   
-  var getcontentshow = ($(this).parent().next(".content-show"));
+  //詳細を取得、消す
+  var getshow = ($(this).parent().next(".content-show"));
+  getshow.addClass("show")
+  //▽の三角形を取得、表示する
   var gettriangleopen = ($(this).prev(".triangle-open"));
-  getcontentshow.addClass("hidden")
   gettriangleopen.removeClass("open")
-  $(this).addClass("hidden")
+  //△の三角形を消す
+  $(this).addClass("close")
   })
 });
 
