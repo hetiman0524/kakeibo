@@ -8,20 +8,21 @@
       .left-content__list
         %table.left-content__list__category
           - @categories_hash.each do |k,v|
-            %tr
+            %tr.category{"data-cat-id": v[1].contents.where("month_id = #{@month.id}").length}
               %td.triangle-open
-              %td.triangle-close.close
+              %td.triangle-close.hidden
               %td.category-name
-                = "#{k}" + ":"
+                = "●#{k}" + ":"
               %td
-                = "¥#{v[0]}"
-            %tr.content-show.show
-              - v[1].contents.where("month_id = #{@month.id}").each do |con| 
+                = "¥#{v[0]}"  
+            
+            - v[1].contents.where("month_id = #{@month.id}").each do |con|
+              %tr.content-show.hidden
                 %td
                 %td
-                  = con.content
+                  = "・#{con.content}"+":"
                 %td
-                  = con.money
+                  = "¥#{con.money}"
       
       .left-content__total
         %p.left-content__total__category
@@ -52,13 +53,8 @@
     border-bottom: 10px solid black;
     
   }
-  .close {
+  .hidden {
     display: none;
   }
-  .show {
-    display: none;
-  }
-  .open {
-    display: none;
-  }
+  
 

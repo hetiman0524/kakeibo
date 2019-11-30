@@ -1,28 +1,32 @@
-$(function()  {
+$(function(){
   $(".triangle-open").on("click", function(){
   console.log(".triangle-open")
   
   //詳細を取得、表示する
-  var gethidden = ($(this).parent().next(".show"));
-  gethidden.removeClass("show");
+  let id = $(this).parent().data('cat-id');
+  console.log(id);
+  var gethidden = ($(this).parent().nextAll().slice(0, id));
+  console.log($(gethidden));
+  gethidden.removeClass("hidden");
   //△の三角形を取得、表示する
   var gettriangleclose = ($(this).next(".triangle-close"));
-  gettriangleclose.removeClass("close");
+  gettriangleclose.removeClass("hidden");
   //▽の三角形を消す
-  $(this).addClass("open");
+  $(this).addClass("hidden");
   })
 
   $(".triangle-close").on("click", function(){
   console.log(".triangle-close")
   
   //詳細を取得、消す
-  var getshow = ($(this).parent().next(".content-show"));
-  getshow.addClass("show")
+  let id = $(this).parent().data('cat-id');
+  var getshow = ($(this).parent().nextAll().slice(0, id));
+  getshow.addClass("hidden")
   //▽の三角形を取得、表示する
   var gettriangleopen = ($(this).prev(".triangle-open"));
-  gettriangleopen.removeClass("open")
+  gettriangleopen.removeClass("hidden")
   //△の三角形を消す
-  $(this).addClass("close")
+  $(this).addClass("hidden")
   })
 });
 
