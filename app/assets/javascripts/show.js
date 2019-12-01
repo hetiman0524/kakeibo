@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
   $(".triangle-open").on("click", function(){
   console.log(".triangle-open")
   
