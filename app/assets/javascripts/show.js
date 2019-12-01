@@ -1,18 +1,32 @@
-$(function()  {
-  $(".triangle").on("click", function(){
-  console.log(".triangle")
-  //var select = $(".hidden").var();
-  //const index = $(".content-show").index(select);
-
-  //thisはclickしたtriangleを持っている
-  //parentはthisの親、つまりcategory名と金額を指定している
-  console.log($(this).parent());
-  //hiddenを取得して、hiddenを消す
-
-  //$('.hidden').removeClass("hidden");
-
-  //$(this).removeClass("hidden");
+$(document).on('turbolinks:load', function(){
+  $(".triangle-open").on("click", function(){
+  console.log(".triangle-open")
   
-  //$('.hidden').show();
+  //詳細を取得、表示する
+  let id = $(this).parent().data('cat-id');
+  console.log(id);
+  var gethidden = ($(this).parent().nextAll().slice(0, id));
+  console.log($(gethidden));
+  gethidden.removeClass("hidden");
+  //△の三角形を取得、表示する
+  var gettriangleclose = ($(this).next(".triangle-close"));
+  gettriangleclose.removeClass("hidden");
+  //▽の三角形を消す
+  $(this).addClass("hidden");
+  })
+
+  $(".triangle-close").on("click", function(){
+  console.log(".triangle-close")
+  
+  //詳細を取得、消す
+  let id = $(this).parent().data('cat-id');
+  var getshow = ($(this).parent().nextAll().slice(0, id));
+  getshow.addClass("hidden")
+  //▽の三角形を取得、表示する
+  var gettriangleopen = ($(this).prev(".triangle-open"));
+  gettriangleopen.removeClass("hidden")
+  //△の三角形を消す
+  $(this).addClass("hidden")
   })
 });
+
