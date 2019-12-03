@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
     #@content = Content.find_by(category_id: ).money
     @months = Month.all
     @month = Month.find_by(params[:id])
-
     @categories_hash = {}
     @categories.each do |category|
       if category.contents.where("month_id = #{1}").length >= 1

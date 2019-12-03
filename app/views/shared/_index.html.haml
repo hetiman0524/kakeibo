@@ -1,6 +1,14 @@
 .header
   %h1.header__manth 
     = @month.month
+  %h2.header__user_name
+    = current_user.name
+  =link_to new_user_registration_path, class: "header__registration" do
+    .header__registration__btn 新規登録
+  =link_to new_user_session_path, class: "header__login" do
+    .header__login__btn ログイン
+  =link_to destroy_user_session_path, class: "header__logout", method: :delete do
+    .header__logout__btn ログアウト
   =link_to new_category_path, class: "header__new" do
     .header__new__btn 金額入力へ
 .side-contents
