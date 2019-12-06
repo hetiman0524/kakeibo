@@ -27,7 +27,7 @@
       .left-content__total
         %p.left-content__total__category
           合計:
-          = "¥#{Content.where("month_id = #{@month.id}").sum(:money).to_i}"
+          = "¥#{Content.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
         %p.left-content__total__money
     .chart
       = pie_chart @categories_hash, id: "total-chart", width: "500px", height: "400px"
