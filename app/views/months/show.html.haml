@@ -8,7 +8,7 @@
       .left-content__list
         %table.left-content__list__category
           - @categories_hash.each do |k,v|
-            %tr.category{"data-cat-id": v[1].contents.where("month_id = #{@month.id}").length}
+            %tr.category{"data-cat-id": v[1].contents.where("month_id = #{@month.id}").where("user_id = #{@user}").length}
               %td.triangle-open
               %td.triangle-close.hidden
               %td.category-name
@@ -16,7 +16,7 @@
               %td
                 = "¥#{v[0]}"  
             
-            - v[1].contents.where("month_id = #{@month.id}").each do |con|
+            - v[1].contents.where("month_id = #{@month.id}").where("user_id = #{@user}").each do |con|
               %tr.content-show.hidden
                 %td
                 %td
