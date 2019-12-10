@@ -5,6 +5,7 @@ class CreateContents < ActiveRecord::Migration[5.2]
       t.string :money
       t.integer :category_id
       t.integer :month_id
+      t.integer :user_id
       t.timestamps
     end
   end
