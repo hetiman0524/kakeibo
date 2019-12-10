@@ -19,12 +19,18 @@ class CategoriesController < ApplicationController
     @content = Content.new
   end
 
-  def create                                             #↓idへ変換する処理
-    @content = Content.create(category_id: Category.where(name: category_params[:name])[0].id, month_id: category_params[:content][:month], content: category_params[:content][:content], money: category_params[:content][:money])
-    redirect_to root_path(@category)
+  def create
+    category_id = Category.where(name: category_params[:name])[0].id
+    content = category_params[:content]
+    user_id = category_params[:user_id]
+    @content = Content.create!(
+      category_id: category_id, month_id: content[:month], content: content[:content],
+      money: content[:money], user_id: user_id
+    )
+     redirect_to root_path(@category)
   end
 
   def category_params
-    params.require(:category).permit(:name, content: [:month, :content, :money])
+    params.require(:category).permit(:name, content: [:month, :content, :money]).merge(user_id: current_user.id)
   end
 end
