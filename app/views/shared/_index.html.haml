@@ -1,8 +1,9 @@
 .header
+  %h1.header__title kakeibo
   %h1.header__manth 
     = @month.month
   %h2.header__user_name
-    = current_user.name
+    = "user : #{current_user.name}"
   =link_to destroy_user_session_path, class: "header__logout", method: :delete do
     .header__logout__btn ログアウト
   =link_to new_category_path, class: "header__new" do
