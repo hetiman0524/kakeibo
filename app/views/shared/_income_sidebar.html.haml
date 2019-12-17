@@ -4,9 +4,12 @@
     = "#{@month.month}の収入"
   %h2.header__user_name
     = "user : #{current_user.name}"
-  %h3.header__cash_flow  収入 ー 支出 = 収支
+  %h3.header__cash_flow  
+    %span 収入 ー 支出 = 
+    収支
   %h3.header__cash_flow-money
-    = "¥#{@income} - ¥#{@expense} = ¥#{@income-@expense}"
+    %span= "¥#{@income} - ¥#{@expense} = "
+    = "¥#{@income-@expense}"
   =link_to expense_money_path, class: "header__change" do
     .header__change__btn 支出ページへ
   =link_to destroy_user_session_path, class: "header__logout", method: :delete do
@@ -21,3 +24,11 @@
           = month.month
         %li.side-content__money
           = "¥#{Income.where("month_id = #{month.id}").where("user_id = #{@user}").sum(:money).to_i}"
+
+:css
+  .header {
+    background-color: #000088;
+  }
+  span {
+    opacity: 0.7;
+  }
