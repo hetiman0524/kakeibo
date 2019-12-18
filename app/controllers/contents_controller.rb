@@ -6,7 +6,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.create!(category_params)
-    redirect_to root_path(@category)
+    redirect_to content_path(@content.month_id)
   end
 
   def show

@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
 
   def create
     @income = Income.create!(income_category_params)
-     redirect_to root_path(@category)
+     redirect_to income_path(@income.month_id)
   end
 
   def show

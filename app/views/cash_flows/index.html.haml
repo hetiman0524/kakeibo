@@ -4,8 +4,6 @@
       = "ようこそ#{current_user.name}さん！見たい月を選んで下さい。"
     =link_to destroy_user_session_path, class: "header__logout", method: :delete do
       .header__logout__btn ログアウト
-    =link_to new_category_path, class: "header__new" do
-      .header__new__btn 金額入力へ
   - else
     =link_to new_user_registration_path, class: "header__registration" do
       .header__registration__btn 新規登録
