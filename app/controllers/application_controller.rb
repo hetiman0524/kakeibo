@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   
   before_action :configure_permitted_parameters, if: :devise_controller?
   def after_sign_out_path_for(resource)
-    months_path
+    cash_flows_path
   end
 
   protected

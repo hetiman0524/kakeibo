@@ -1,0 +1,35 @@
+.header
+  =link_to root_path, class: "header__title__link" do
+    %h1.header__title kakeibo
+  %h1.header__manth 
+    = "#{@month.name}の収入"
+  %h2.header__user_name
+    = "user : #{current_user.name}"
+  %h3.header__cash_flow  
+    %span 収入 ー 支出 = 
+    収支
+  %h3.header__cash_flow-money
+    %span= "¥#{@income} - ¥#{@expense} = "
+    = "¥#{@income-@expense}"
+  =link_to content_path, class: "header__change" do
+    .header__change__btn 支出ページへ
+  =link_to destroy_user_session_path, class: "header__logout", method: :delete do
+    .header__logout__btn ログアウト
+  =link_to new_income_path, class: "header__new" do
+    .header__new__btn 金額入力へ
+.side-contents
+  - @months.each do |month|
+    = link_to income_path(month.id),class: "side-content__link"  do
+      %ul.side-content
+        %li.side-content__month
+          = month.name
+        %li.side-content__money
+          = "¥#{Income.where("month_id = #{month.id}").where("user_id = #{@user}").sum(:money).to_i}"
+
+:css
+  .header {
+    background-color: #000088;
+  }
+  span {
+    opacity: 0.7;
+  }

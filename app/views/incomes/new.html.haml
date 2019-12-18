@@ -1,0 +1,12 @@
+.new-form
+  %h1 収入新規入力
+  = form_for(@income) do |f|
+    = f.label :name, "カテゴリー"
+    = f.collection_select :income_category_id, IncomeCategory.all, :id, :name
+    = f.label :month, "月"
+    = f.collection_select :month_id, Month.all, :id, :name
+    = f.label :content, "内容"
+    = f.text_field :content
+    = f.label :money, "金額" 
+    = f.text_field :money
+    = f.submit "登録する"

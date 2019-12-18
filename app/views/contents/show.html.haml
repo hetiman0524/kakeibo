@@ -1,10 +1,10 @@
 .wrapper
-  = render 'shared/index'
+  = render 'shared/expense_sidebar'
   .expenses
     .left-content
       .left-content__title
         %h2.left-content__title__name
-        支出
+        支出の詳細
       .left-content__list
         %table.left-content__list__category
           - @categories_hash.each do |k,v|
@@ -56,5 +56,3 @@
   .hidden {
     display: none;
   }
-  
-
