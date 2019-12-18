@@ -1,7 +1,7 @@
 .header
   %h1.header__title kakeibo
   %h1.header__manth 
-    = "#{@month.month}の支出"
+    = "#{@month.name}の支出"
   %h2.header__user_name
     = "user : #{current_user.name}"
   %h3.header__cash_flow  
@@ -10,18 +10,18 @@
   %h3.header__cash_flow-money
     %span= "¥#{@income} - ¥#{@expense} = "
     = "¥#{@income-@expense}"
-  =link_to income_money_path, class: "header__change" do
+  =link_to income_path, class: "header__change" do
     .header__change__btn 収入ページへ
   =link_to destroy_user_session_path, class: "header__logout", method: :delete do
     .header__logout__btn ログアウト
-  =link_to new_category_path, class: "header__new" do
+  =link_to new_content_path, class: "header__new" do
     .header__new__btn 金額入力へ
 .side-contents
   - @months.each do |month|
-    = link_to expense_money_path(month.id),class: "side-content__link"  do
+    = link_to content_path(month.id),class: "side-content__link"  do
       %ul.side-content
         %li.side-content__month
-          = month.month
+          = month.name
         %li.side-content__money
           = "¥#{Content.where("month_id = #{month.id}").where("user_id = #{@user}").sum(:money).to_i}"
 
