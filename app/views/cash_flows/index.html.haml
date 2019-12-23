@@ -1,15 +1,9 @@
 .header
-  - if user_signed_in? 
-    %h1.header__manth 
-      = "ようこそ#{current_user.name}さん！見たい月を選んで下さい。"
-    =link_to destroy_user_session_path, class: "header__logout", method: :delete do
-      .header__logout__btn ログアウト
-    =link_to income_path(1), class: "header__income" do
-      .header__logout__btn 収入ページへ
-    =link_to content_path(1), class: "header__expense" do
-      .header__logout__btn 支出ページへ
-  - else
-    =link_to new_user_registration_path, class: "header__registration" do
-      .header__registration__btn 新規登録
-    =link_to new_user_session_path, class: "header__login" do
-      .header__login__btn ログイン
+  = render 'shared/header'
+= month_calendar(attribute: :day, events: @expense_events, ) do |date, expenses|
+  = date
+  - expenses.each do |expense|
+    .expense_money
+      = "¥#{expense.money}"
+ 
+

@@ -7,7 +7,7 @@ class IncomesController < ApplicationController
 
   def create
     @income = Income.create!(income_category_params)
-     redirect_to income_path(@income.month_id)
+    redirect_to income_path(@income.month_id)
   end
 
   def show
@@ -32,6 +32,6 @@ class IncomesController < ApplicationController
   
   private
   def income_category_params
-    params.require(:income).permit(:income_category_id, :month_id, :content, :money).merge(user_id: current_user.id)
+    params.require(:income).permit(:income_category_id, :day, :content, :money).merge(user_id: current_user.id)
   end
 end

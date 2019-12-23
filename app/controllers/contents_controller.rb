@@ -6,7 +6,7 @@ class ContentsController < ApplicationController
 
   def create
     @content = Content.create!(category_params)
-    redirect_to content_path(@content.month_id)
+    redirect_to root_path
   end
 
   def show
@@ -31,6 +31,6 @@ class ContentsController < ApplicationController
 
   private
   def category_params
-    params.require(:content).permit(:category_id, :month_id, :content, :money).merge(user_id: current_user.id)
+    params.require(:content).permit(:category_id, :day, :content, :money).merge(user_id: current_user.id)
   end
 end

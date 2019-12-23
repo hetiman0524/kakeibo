@@ -69,3 +69,4 @@ gem 'devise'
 gem 'haml-rails'
 gem 'chartkick'
 gem 'active_hash'
+gem "simple_calendar", "~> 2.0"

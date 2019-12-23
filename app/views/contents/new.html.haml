@@ -3,8 +3,8 @@
   = form_for(@content) do |f|
     = f.label :name, "カテゴリー"
     = f.collection_select :category_id, Category.all, :id, :name
-    = f.label :month, "月"
-    = f.collection_select :month_id, Month.all, :id, :name
+    = f.label :day, "日付"
+    = f.date_field :day
     = f.label :content, "内容"
     = f.text_field :content
     = f.label :money, "金額" 
