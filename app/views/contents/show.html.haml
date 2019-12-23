@@ -23,7 +23,13 @@
                   = "・#{con.content}"+":"
                 %td
                   = "¥#{con.money}"
-      
+                %td
+                  =link_to edit_content_path, class: "edit_link" do
+                    .edit_btn 編集する
+                %td
+                  =link_to content_path, class: "edit_link" do
+                    .destory_btn 削除する
+
       .left-content__total
         %p.left-content__total__category
           合計:
