@@ -1,6 +1,6 @@
 class Category < ActiveHash::Base
   include ActiveHash::Associations
-  has_many :contents
+  has_many :expense_contents
 
   self.data = [
     {id: 1, name: '食費'}, 

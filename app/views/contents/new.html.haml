@@ -1,6 +1,6 @@
 .expense-form
   %h1 支出新規入力
-  = form_for(@content) do |f|
+  = form_for(@expense_content, url: contents_path) do |f|
     = f.label :name, "カテゴリー"
     = f.collection_select :category_id, Category.all, :id, :name
     = f.label :month, "月"

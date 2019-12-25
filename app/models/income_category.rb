@@ -1,6 +1,6 @@
 class IncomeCategory < ActiveHash::Base
   include ActiveHash::Associations
-  has_many :incomes
+  has_many :income_contents
 
   self.data = [
     {id: 1, name: '給与'}, 
