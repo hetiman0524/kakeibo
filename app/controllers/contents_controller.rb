@@ -21,7 +21,9 @@ class  ContentsController < ApplicationController
     @categories = Category.all
     @categories_hash = {}
     @categories_hash_show = {}
-    
+    #/if (params[:content_id] != nil) && (params[:content_id].exists?)
+    #@expense_content = ExpenseContent.find(params[:content_id])
+    #end
     @categories.each do |category|
       if category.expense_contents.where("month_id = #{@month.id}").length >= 1
         #各月の合計金額
