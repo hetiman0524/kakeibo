@@ -6,7 +6,7 @@
       .header__logout__btn ログアウト
     =link_to income_path(1), class: "header__income" do
       .header__logout__btn 収入ページへ
-    =link_to content_path(1), class: "header__expense" do
+    =link_to expense_path(1), class: "header__expense" do
       .header__logout__btn 支出ページへ
   - else
     =link_to new_user_registration_path, class: "header__registration" do

@@ -1,4 +1,4 @@
-class Category < ActiveHash::Base
+class ExpenseCategory < ActiveHash::Base
   include ActiveHash::Associations
   has_many :expense_contents
 

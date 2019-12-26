@@ -1,6 +1,6 @@
 class Month < ActiveHash::Base
   include ActiveHash::Associations
-  has_many :contents
+  has_many :expense_contents
   has_many :incomes
 
   self.data = [
