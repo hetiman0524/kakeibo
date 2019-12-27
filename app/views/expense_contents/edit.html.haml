@@ -1,0 +1,12 @@
+.expense-form
+  %h1 支出新規入力
+  = form_for(@month, @expense_content) do |f|
+    = f.label :name, "カテゴリー"
+    = f.collection_select :expense_category_id, ExpenseCategory.all, :id, :name
+    = f.label :month, "月"
+    = f.collection_select :month_id, Month.all, :id, :name
+    = f.label :content, "内容"
+    = f.text_field :content
+    = f.label :money, "金額" 
+    = f.text_field :money
+    = f.submit "登録する"
