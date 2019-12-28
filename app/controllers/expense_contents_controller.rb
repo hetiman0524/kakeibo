@@ -1,15 +1,16 @@
 class ExpenseContentsController < ApplicationController
   def edit
-    @month =  Month.find(params[:expense_id])
-    @expense_content = ExpenseContent.where("month_id = #{@month.id}")
+    @expense_content = ExpenseContent.find(params[:id])
   end
 
   def update
     expense_content = ExpenseContent.find(params[:id])
     expense_content.update(expense_params)
+    redirect_to root_path
   end
 
   def destroy
+    expense_content = ExpenseContent.find(params[:id])
   end
 
   private
