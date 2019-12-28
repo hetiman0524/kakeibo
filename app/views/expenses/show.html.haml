@@ -27,7 +27,7 @@
                   =link_to edit_expense_expense_content_path(@month.id, con.id), class: "edit_link" do
                     .edit_btn 編集する
                 %td
-                  =link_to expense_path(con.id),method: :delete, class: "edit_link" do
+                  =link_to expense_expense_content_path(@month.id, con.id),method: :delete, class: "edit_link" do
                     .destory_btn 削除する
 
       .left-content__total

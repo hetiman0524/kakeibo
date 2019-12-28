@@ -33,11 +33,6 @@ class  ExpensesController < ApplicationController
     @expense = ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i
   end
 
-  def destroy
-    content = Content.find(params[:id])
-    content.destroy
-  end
-
   private
   def category_params
     params.require(:expense_content).permit(:expense_category_id, :month_id, :content, :money).merge(user_id: current_user.id)

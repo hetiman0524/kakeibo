@@ -11,6 +11,8 @@ class ExpenseContentsController < ApplicationController
 
   def destroy
     expense_content = ExpenseContent.find(params[:id])
+    expense_content.destroy
+    redirect_to root_path
   end
 
   private
