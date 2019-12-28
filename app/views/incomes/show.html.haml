@@ -1,6 +1,6 @@
 .wrapper
   = render 'shared/income_sidebar'
-  .expenses
+  .contents
     .left-content
       .left-content__title
         %h2.left-content__title__name
@@ -23,18 +23,17 @@
                   = "・#{con.content}"+":"
                 %td
                   = "¥#{con.money}"
-                /%td
-                /  =link_to edit_content_path(@content.id), class: "edit_link" do
-                /    .edit_btn 編集する
-                /%td
-                /  =link_to content_path(@content.id),method: :delete, class: "edit_link" do
-                /    .destory_btn 削除する
+                %td
+                  =link_to edit_income_income_content_path(@month.id, con.id), class: "edit_link" do
+                    .edit_btn 編集する
+                %td
+                  =link_to income_income_content_path(@month.id, con.id),method: :delete, class: "destroy_link" do
+                    .destory_btn 削除する
       
       .left-content__total
         %p.left-content__total__category
           合計:
           = "¥#{IncomeContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
-        %p.left-content__total__money
     .chart
       = pie_chart @income_categories_hash, id: "total-chart", width: "500px", height: "400px"
     

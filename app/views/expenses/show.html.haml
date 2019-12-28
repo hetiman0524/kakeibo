@@ -1,6 +1,6 @@
 .wrapper
   = render 'shared/expense_sidebar'
-  .expenses
+  .contents
     .left-content
       .left-content__title
         %h2.left-content__title__name
@@ -27,14 +27,13 @@
                   =link_to edit_expense_expense_content_path(@month.id, con.id), class: "edit_link" do
                     .edit_btn 編集する
                 %td
-                  =link_to expense_expense_content_path(@month.id, con.id),method: :delete, class: "edit_link" do
+                  =link_to expense_expense_content_path(@month.id, con.id),method: :delete, class: "destroy_link" do
                     .destory_btn 削除する
 
       .left-content__total
         %p.left-content__total__category
           合計:
           = "¥#{ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
-        %p.left-content__total__money
     .chart
       = pie_chart @expense_categories_hash, id: "total-chart", width: "500px", height: "400px"
     

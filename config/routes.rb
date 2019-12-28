@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :expenses, only: [:new, :create, :show] do
     resources :expense_contents, only: [:destroy, :edit, :update]
   end
-  resources :incomes, only: [:new, :create, :show, :edit, :update, :destroy] 
+  resources :incomes, only: [:new, :create, :show] do
+    resources :income_contents, only: [:destroy, :edit, :update]
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
