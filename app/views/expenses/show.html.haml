@@ -1,13 +1,13 @@
 .wrapper
   = render 'shared/expense_sidebar'
-  .expenses
+  .contents
     .left-content
       .left-content__title
         %h2.left-content__title__name
         支出の詳細
       .left-content__list
         %table.left-content__list__category
-          - @categories_hash.each do |k,v|
+          - @expense_categories_hash.each do |k,v|
             %tr.category{"data-cat-id": v[1].expense_contents.where("month_id = #{@month.id}").where("user_id = #{@user}").length}
               %td.triangle-open
               %td.triangle-close.hidden
@@ -23,20 +23,19 @@
                   = "・#{con.content}"+":"
                 %td
                   = "¥#{con.money}"
-                /%td
-                /  =link_to edit_content_path(@expense_content.id), class: "edit_link" do
-                /    .edit_btn 編集する
-                /%td
-                /  =link_to content_path(@content.id),method: :delete, class: "edit_link" do
-                /    .destory_btn 削除する
+                %td
+                  =link_to edit_expense_expense_content_path(@month.id, con.id), class: "edit_link" do
+                    .edit_btn 編集する
+                %td
+                  =link_to expense_expense_content_path(@month.id, con.id),method: :delete, class: "destroy_link" do
+                    .destory_btn 削除する
 
       .left-content__total
         %p.left-content__total__category
           合計:
           = "¥#{ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
-        %p.left-content__total__money
     .chart
-      = pie_chart @categories_hash, id: "total-chart", width: "500px", height: "400px"
+      = pie_chart @expense_categories_hash, id: "total-chart", width: "500px", height: "400px"
     
 
     
