@@ -20,7 +20,6 @@ class  ExpensesController < ApplicationController
     @expense_categories_hash = {}
     @expense_categories_hash_show = {}
     #/if (params[:content_id] != nil) && (params[:content_id].exists?)
-    
     #end
     @expense_categories.each do |expense_category|
       if expense_category.expense_contents.where("month_id = #{@month.id}").length >= 1
