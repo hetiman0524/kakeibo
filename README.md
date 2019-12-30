@@ -1,22 +1,46 @@
-# README
+# kakeibo app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## userテーブル
+|column|Type|Option|
+|------|----|------|
+|name|string|null: false|
+|email|string|null: false|
+|password|string|null:false|
 
-* Ruby version
+### Association
+- has_many :expense_contents
+- has_many :income_contents
 
-* System dependencies
 
-* Configuration
+## income_content
+|column|Type|Option|
+|------|----|------|
+|content|string|null: false|
+|money|string|null: false|
+|income_categoty_id|string|null:false|
+|month_id|string|null:false|
+|user_id|string|null:false|
 
-* Database creation
+### Association
+- belongs_to_active_hash :income_category
+- belongs_to_active_hash :month
+- belongs_to :user
 
-* Database initialization
 
-* How to run the test suite
+## expense_content
+|column|Type|Option|
+|------|----|------|
+|content|string|null: false|
+|money|string|null: false|
+|expense_categoty_id|string|null:false|
+|month_id|string|null:false|
+|user_id|string|null:false|
 
-* Services (job queues, cache servers, search engines, etc.)
+### Association
+- belongs_to_active_hash :expense_category
+- belongs_to_active_hash :month
+- belongs_to :user
 
-* Deployment instructions ...
+
+
