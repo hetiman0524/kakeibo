@@ -4,3 +4,4 @@ class ExpenseContent < ApplicationRecord
   belongs_to_active_hash :expense_category
   belongs_to_active_hash :month
   belongs_to :user
+end
