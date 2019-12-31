@@ -16,7 +16,7 @@
               %td.category-name
                 = "●#{k}" + ":"
               %td
-                = "¥#{v[0]}"  
+                = "¥#{v[0].to_s(:delimited)}"  
             
             - v[1].income_contents.where("month_id = #{@month.id}").where("user_id = #{@user}").each do |con|
               %tr.content-show.hidden
@@ -24,7 +24,7 @@
                 %td
                   = "・#{con.content}"+":"
                 %td
-                  = "¥#{con.money}"
+                  = "¥#{con.money.to_i.to_s(:delimited)}"
                 %td
                   =link_to edit_income_income_content_path(@month.id, con.id), class: "edit_link" do
                     .edit_btn 編集する
@@ -35,7 +35,7 @@
       .left-content__total
         %p.left-content__total__category
           合計:
-          = "¥#{IncomeContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
+          = "¥#{IncomeContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i.to_s(:delimited)}"
     .chart
       = pie_chart @income_categories_hash, id: "total-chart", width: "500px", height: "400px"
     

@@ -9,8 +9,9 @@
     %span 収入 ー 支出 = 
     収支
   %h3.header__cash_flow-money
-    %span= "¥#{@income} - ¥#{@expense} = "
-    = "¥#{@income-@expense}"
+    %span= "¥#{@income.to_s(:delimited)} - ¥#{@expense.to_s(:delimited)} = "
+    - cash_flow = "¥#{@income-@expense}"
+    = cash_flow
   =link_to income_path, class: "header__change" do
     .header__change__btn 収入ページへ
   =link_to destroy_user_session_path, class: "header__logout", method: :delete do
@@ -24,7 +25,7 @@
         %li.side-content__month
           = month.name
         %li.side-content__money
-          = "¥#{ExpenseContent.where("month_id = #{month.id}").where("user_id = #{@user}").sum(:money).to_i}"
+          = "¥#{ExpenseContent.where("month_id = #{month.id}").where("user_id = #{@user}").sum(:money).to_i.to_s(:delimited)}"
 
 :css
   .header {
