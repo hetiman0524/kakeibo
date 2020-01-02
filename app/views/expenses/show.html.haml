@@ -15,7 +15,7 @@
                 ▼
               %td.category-name
                 = "●#{k}" + ":"
-              %td
+              %td.category-money
                 = "¥#{v[0].to_s(:delimited)}"  
             
             - v[1].expense_contents.where("month_id = #{@month.id}").where("user_id = #{@user}").each do |con|

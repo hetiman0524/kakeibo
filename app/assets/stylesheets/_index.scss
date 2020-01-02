@@ -103,6 +103,12 @@
     &__list {
       padding: 20px 0 0 20px;
       font-size: 18px;
+      .category-name {
+        border-top: thin solid gray; 
+      }
+      .category-money {
+        border-top: thin solid gray; 
+      }
       .edit_link {
         text-decoration: none;
         color: white;
