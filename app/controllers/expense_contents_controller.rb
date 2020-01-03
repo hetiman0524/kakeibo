@@ -6,13 +6,13 @@ class ExpenseContentsController < ApplicationController
   def update
     expense_content = ExpenseContent.find(params[:id])
     expense_content.update(expense_params)
-    redirect_to root_path
+    redirect_to expense_path(expense_content.month_id)
   end
 
   def destroy
     expense_content = ExpenseContent.find(params[:id])
     expense_content.destroy
-    redirect_to root_path
+    redirect_to expense_path(expense_content.month_id)
   end
 
   private
