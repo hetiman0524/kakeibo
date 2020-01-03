@@ -9,9 +9,8 @@
     %span 収入 ー 支出 = 
     収支
   %h3.header__cash_flow-money
-    %span= "¥#{@income.to_s(:delimited)} - ¥#{@expense.to_s(:delimited)} = "
-    - cash_flow = "¥#{@income-@expense}"
-    = cash_flow
+    %span= "¥#{@income.to_i.to_s(:delimited)} - ¥#{@expense.to_i.to_s(:delimited)} = "
+    = "¥#{@cash_flow.to_i.to_s(:delimited)}"
   =link_to income_path, class: "header__change" do
     .header__change__btn 収入ページへ
   =link_to destroy_user_session_path, class: "header__logout", method: :delete do

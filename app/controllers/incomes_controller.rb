@@ -28,7 +28,7 @@ class IncomesController < ApplicationController
     end
     @income = IncomeContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i
     @expense = ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i
-    
+    @cash_flow = @income-@expense
   end
   
   private
