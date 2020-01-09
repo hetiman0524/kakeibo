@@ -8,19 +8,16 @@ class  ExpensesController < ApplicationController
     @expense_content = ExpenseContent.create!(category_params)
     redirect_to expense_path(@expense_content.month_id)
   end
-  
-  
 
   def show
     @months = Month.all
     @month = Month.find(params[:id])
+    
     @user = current_user.id
 
     @expense_categories = ExpenseCategory.all
     @expense_categories_hash = {}
     @expense_categories_hash_show = {}
-    #/if (params[:content_id] != nil) && (params[:content_id].exists?)
-    #end
     @expense_categories.each do |expense_category|
       if expense_category.expense_contents.where("month_id = #{@month.id}").length >= 1
         #各月の合計金額

@@ -1,5 +1,4 @@
 class IncomesController < ApplicationController
-  
   def new
     @month = Month.new
     @income_content = IncomeContent.new
@@ -15,7 +14,7 @@ class IncomesController < ApplicationController
     @month = Month.find(params[:id])
 
     @user = current_user.id
-    @content = IncomeContent.find(params[:id])
+    
     @income_categories = IncomeCategory.all
     @income_categories_hash = {}
     @income_categories_hash_show = {}
