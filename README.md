@@ -1,5 +1,5 @@
-#リポジトリ名
-## kakeibo app
+# リポジトリ名
+### kakeibo app
 
 
 ## 概要
