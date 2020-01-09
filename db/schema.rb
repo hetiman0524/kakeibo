@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 2019_12_26_060956) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id"
-    t.datetime "day"
   end
 
   create_table "Income_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -31,7 +30,6 @@ ActiveRecord::Schema.define(version: 2019_12_26_060956) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "day"
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
