@@ -6,13 +6,13 @@ class IncomeContentsController < ApplicationController
   def update
     income_content = IncomeContent.find(params[:id])
     income_content.update(income_params)
-    redirect_to root_path
+    redirect_to income_path(income_content.month_id)
   end
 
   def destroy
     income_content = IncomeContent.find(params[:id])
     income_content.destroy
-    redirect_to root_path
+    redirect_to income_path(income_content.month_id)
   end
 
   private

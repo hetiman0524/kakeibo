@@ -10,11 +10,13 @@
           - @expense_categories_hash.each do |k,v|
             %tr.category{"data-cat-id": v[1].expense_contents.where("month_id = #{@month.id}").where("user_id = #{@user}").length}
               %td.triangle-open
+                ▶︎
               %td.triangle-close.hidden
+                ▼
               %td.category-name
                 = "●#{k}" + ":"
-              %td
-                = "¥#{v[0]}"  
+              %td.category-money
+                = "¥#{v[0].to_s(:delimited)}"  
             
             - v[1].expense_contents.where("month_id = #{@month.id}").where("user_id = #{@user}").each do |con|
               %tr.content-show.hidden
@@ -22,7 +24,7 @@
                 %td
                   = "・#{con.content}"+":"
                 %td
-                  = "¥#{con.money}"
+                  = "¥#{con.money.to_i.to_s(:delimited)}"
                 %td
                   =link_to edit_expense_expense_content_path(@month.id, con.id), class: "edit_link" do
                     .edit_btn 編集する
@@ -33,30 +35,21 @@
       .left-content__total
         %p.left-content__total__category
           合計:
-          = "¥#{ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i}"
+          = "¥#{ExpenseContent.where("month_id = #{@month.id}").where("user_id = #{@user}").sum(:money).to_i.to_s(:delimited)}"
     .chart
       = pie_chart @expense_categories_hash, id: "total-chart", width: "500px", height: "400px"
     
 
     
 :css
+  .triangle-open {
+    cursor: pointer;
+  }
+  .triangle-close {
+    cursor: pointer;
+  }
   .category-name {
     width: 200px;
-  }
-  .triangle-open {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 10px solid black;
-  }
-  .triangle-close{
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 10px solid black;
-    
   }
   .hidden {
     display: none;
